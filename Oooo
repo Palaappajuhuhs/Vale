@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página de Juego</title>
+    <style>
+        /* CSS - Estilos de la página */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://i.postimg.cc/BbfGNR7T/IMG-3778.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .contenido {
+            margin: 20px;
+        }
+        .pista {
+            width: 100%;
+            height: 100px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            position: relative;
+        }
+        .pista input {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px;
+        }
+        .menu {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #000;
+            padding: 10px;
+            color: white;
+            cursor: pointer;
+        }
+        /* Estilos adicionales */
+    </style>
+</head>
+<body>
+    <!-- Menú de navegación -->
+    <div class="menu" onclick="toggleMenu()">❤️</div>
+    <div id="menu" style="display:none; background-color: black; position: fixed; top: 0; left: 0; width: 200px; height: 100%; color: white; padding-top: 20px;">
+        <a href="#inicio" style="color: white; display: block; padding: 10px;">Inicio</a>
+        <a href="#juego" style="color: white; display: block; padding: 10px;">Juego</a>
+        <a href="#deMiParaTu" style="color: white; display: block; padding: 10px;">De mi para tu</a>
+    </div>
+
+    <!-- Contenido de la página -->
+    <div class="contenido" id="juego">
+        <h1>¡Te lo vas a pasar bien!</h1>
+        <div class="pista" id="pista1">
+            <span>Pista 1: ¿Qué palabra corresponde aquí?</span>
+            <input type="text" id="input1" oninput="verificarRespuesta('pista1', 'clave1')">
+        </div>
+        <div class="pista" id="pista2" style="display:none;">
+            <span>Pista 2: ¿Qué palabra corresponde aquí?</span>
+            <input type="text" id="input2" oninput="verificarRespuesta('pista2', 'clave2')">
+        </div>
+        <div class="pista" id="pista3" style="display:none;">
+            <span>Pista 3: ¿Qué palabra corresponde aquí?</span>
+            <input type="text" id="input3" oninput="verificarRespuesta('pista3', 'clave3')">
+        </div>
+    </div>
+
+    <script>
+        // JavaScript - Funciones interactivas
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            if (menu.style.display === "none") {
+                menu.style.display = "block";
+            } else {
+                menu.style.display = "none";
+            }
+        }
+
+        function verificarRespuesta(pistaId, clave) {
+            var input = document.getElementById("input" + pistaId.charAt(pistaId.length - 1));
+            var pista = document.getElementById(pistaId);
+            if (input.value === clave) {
+                document.getElementById(pistaId).style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
